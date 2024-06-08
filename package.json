@@ -14,8 +14,8 @@
   "contributes": {
     "commands": [
       {
-        "command": "used-characters.helloWorld",
-        "title": "Hello World"
+        "command": "used-characters.usechar",
+        "title": "[usechar] List the characters used in the selected text"
       }
     ]
   },
