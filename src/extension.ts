@@ -17,7 +17,7 @@ export function activate(context: vscode.ExtensionContext) {
 		if (editor) {
             const selection: vscode.Selection = editor.selection;
             let text: string = editor.document.getText(selection);
-			text = getUniqueCharacters(text.replace(/[\n\r\t\f\v]/g, ''));
+			text = getUniqueCharacters(text);
 			if (text) {
                 vscode.window.showInformationMessage(text);
             } else {
@@ -32,14 +32,69 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 function getUniqueCharacters(input: string): string {
-    // 创建一个Set来存储唯一的字符
+    // 移除多余的换行符和控制字符
+    const cleanedInput = input.replace(/[\n\r\t\f\v]/g, '');
+
+    // 创建Set来存储唯一的字符
     const uniqueChars = new Set<string>();
-    // 遍历输入字符串的每个字符
-    for (const char of input) {
+
+    // 遍历清理后的字符串的每个字符
+    for (const char of cleanedInput) {
         uniqueChars.add(char);
     }
-    // 将Set转换为数组并返回
-    return Array.from(uniqueChars).join('');
+
+    // 将Set转换为数组
+    const uniqueArray = Array.from(uniqueChars);
+
+    // 分类数组
+    const numbers: string[] = [];
+    const letters: string[] = [];
+    const punctuation: string[] = [];
+    const chinese: string[] = [];
+    const japanese: string[] = [];
+    const korean: string[] = [];
+    const spaces: string[] = [];
+    const others: string[] = [];
+
+    // 正则表达式匹配
+    const numberRegex = /\d/;
+    const letterRegex = /[a-zA-Z]/;
+    const punctuationRegex = /[\u2000-\u206F\u2E00-\u2E7F\p{P}]/u;
+    const chineseRegex = /[\u4e00-\u9fa5]/;
+    const japaneseRegex = /[\u3000-\u30FF\u31F0-\u31FF\uFF00-\uFFEF]/;
+    const koreanRegex = /[\uAC00-\uD7AF\u1100-\u11FF]/;
+
+    // 分类
+    uniqueArray.forEach(char => {
+        if (char === ' ') {
+            spaces.push(char);
+        } else if (numberRegex.test(char)) {
+            numbers.push(char);
+        } else if (letterRegex.test(char)) {
+            letters.push(char);
+        } else if (punctuationRegex.test(char)) {
+            punctuation.push(char);
+        } else if (chineseRegex.test(char)) {
+            chinese.push(char);
+        } else if (japaneseRegex.test(char)) {
+            japanese.push(char);
+        } else if (koreanRegex.test(char)) {
+            korean.push(char);
+        } else {
+            others.push(char);
+        }
+    });
+
+    // 排序
+    numbers.sort();
+    letters.sort();
+    punctuation.sort();
+
+    // 按顺序连接
+    return numbers.join('') + letters.join('') + punctuation.join('') + spaces.join('') + chinese.join('') + japanese.join('') + korean.join('') + others.join('');
+
+	// getUniqueCharacters("hello 你好123! world。こんにちは 안녕하세요")
+	// -> "123dehlorw!。 你好こんにちは안녕하세요"
 }
 
 // 当您的扩展程序停用时，将调用此方法
