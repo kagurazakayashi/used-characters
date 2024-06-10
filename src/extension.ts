@@ -11,7 +11,7 @@ export function activate(context: vscode.ExtensionContext) {
 	// 该命令已在 package.json 文件中定义
 	// 现在使用 registerCommand 提供命令的实现
 	// commandId 参数必须与 package.json 中的 command 字段匹配
-	const disposable = vscode.commands.registerCommand('used-characters.usechar', () => {
+	const disposable = vscode.commands.registerCommand('used-characters.usedchar', () => {
 		// 每次执行命令时都会执行此处放置的代码
 		const editor = vscode.window.activeTextEditor;
 		if (editor) {
@@ -31,7 +31,7 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(disposable);
 }
 
-function getUniqueCharacters(input: string): string {
+export function getUniqueCharacters(input: string): string {
     // 移除多余的换行符和控制字符
     const cleanedInput = input.replace(/[\n\r\t\f\v]/g, '');
 
@@ -91,10 +91,7 @@ function getUniqueCharacters(input: string): string {
     punctuation.sort();
 
     // 按顺序连接
-    return numbers.join('') + letters.join('') + punctuation.join('') + spaces.join('') + chinese.join('') + japanese.join('') + korean.join('') + others.join('');
-
-	// getUniqueCharacters("hello 你好123! world。こんにちは 안녕하세요")
-	// -> "123dehlorw!。 你好こんにちは안녕하세요"
+    return numbers.join('') + letters.join('') + spaces.join('') + punctuation.join('') + chinese.join('') + japanese.join('') + korean.join('') + others.join('');
 }
 
 // 当您的扩展程序停用时，将调用此方法
