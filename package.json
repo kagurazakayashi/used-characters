@@ -1,10 +1,10 @@
 {
   "name": "used-characters",
-  "displayName": "Used Characters",
-  "description": "List which characters are used in the selection",
-  "version": "0.0.1",
+  "displayName": "%displayName%",
+  "description": "%description%",
+  "version": "1.0.0",
   "engines": {
-    "vscode": "^1.90.0"
+    "vscode": "^1.80.0"
   },
   "categories": [
     "Other"
@@ -14,8 +14,8 @@
   "contributes": {
     "commands": [
       {
-        "command": "used-characters.usechar",
-        "title": "[usechar] List the characters used in the selected text"
+        "command": "used-characters.usedchar",
+        "title": "%used-characters.usedchar.title%"
       }
     ]
   },
