@@ -1,71 +1,56 @@
-# used-characters README
+# used-characters
 
-This is the README for your extension "used-characters". After writing up a brief description, we recommend including the following sections.
+![icon](icon.png)
+
+This plugin can help you quickly understand which characters are used in a certain content. It is usually used when doing font simplification and other operations.
+
+本插件可以帮助您快速了解某段内容中都使用了哪些字符。通常在做字体精简等操作时会用到。
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+![screenshot](screenshot.png)
 
-For example if there is an image subfolder under your extension project workspace:
+The function and operation are very simple:
 
-\!\[feature X\]\(images/feature-x.png\)
+1. Select a text.
+2. In the command selection area (shortcut: `Ctrl+Shift+P`), enter `usedchar` and press Enter.
+3. A tooltip will appear in the lower right corner, telling you which characters are used. You can right-click in the tooltip and select `Copy Text`.
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+- You can find the full command of this plugin in the selection list below after typing `usedchar`. Press the gear icon to the right of the command to assign a shortcut key to it.
+- Characters are automatically sorted in the following order: `0-9`, `A-Z`, `a-z`, English punctuation, Japanese characters, Korean characters, other languages ​​and special symbols.
 
-## Requirements
+功能和操作非常简单：
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+1. 选定一段文本。
+2. 在命令选择区 (快捷键:`Ctrl+Shift+P`) 输入 `usedchar` 并回车。
+3. 右下角会出现提示框，告诉你都使用了哪些字符。你可以在提示框按鼠标右键，选择 `复制文本` 。
 
-## Extension Settings
+- 你可以在输入 `usedchar` 后，在下面的选择列表中找到本插件的完整命令，按该命令右侧的齿轮图标，可以为其指定快捷键。
+- 字符会自动进行排序，顺序为: `0-9`, `A-Z`, `a-z`, 英文标点, 日文字符, 韩文字符, 其他语言和特殊符号 。
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+### Demo
 
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
+- `AAA bbb 0123 !!` -> `0123Ab !`
+- `Run Extension: Extension Host [0]` -> `0EHReinostux :[]`
+- `Hello Hello, 你好你好， 123! こんにちは World。안녕하세요 ( っ*'ω'*c)` -> `123HWcdelor !'()*,。，你好こんにちはっ안녕하세요ω`
+- `如果你能记住我的名字，如果你们都能记住我的名字，也许我或者“我们”，终有一天能自由地生存着。` -> `“”。，如果你能记住我的名字们都也许或者终有一天自由地生存着`
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
-
 ### 1.0.0
 
-Initial release of ...
+- Initial release.
+- Core functions.
 
-### 1.0.1
+## LICENSE
 
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+Copyright (c) 2024 KagurazakaYashi
+used-characters is licensed under Mulan PSL v2.
+You can use this software according to the terms and conditions of the Mulan
+PSL v2.
+You may obtain a copy of Mulan PSL v2 at:
+         http://license.coscl.org.cn/MulanPSL2
+THIS SOFTWARE IS PROVIDED ON AN "AS IS" BASIS, WITHOUT WARRANTIES OF ANY
+KIND, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO
+NON-INFRINGEMENT, MERCHANTABILITY OR FIT FOR A PARTICULAR PURPOSE.
+See the Mulan PSL v2 for more details.
