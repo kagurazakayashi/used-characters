@@ -30,10 +30,23 @@ The function and operation are very simple:
 
 ### Demo
 
-- `AAA bbb 0123 !!` -> `0123Ab !`
-- `Run Extension: Extension Host [0]` -> `0EHReinostux :[]`
-- `Hello Hello, 你好你好， 123! こんにちは World。안녕하세요 ( っ*'ω'*c)` -> `123HWcdelor !'()*,。，你好こんにちはっ안녕하세요ω`
-- `如果你能记住我的名字，如果你们都能记住我的名字，也许我或者“我们”，终有一天能自由地生存着。` -> `“”。，如果你能记住我的名字们都也许或者终有一天自由地生存着`
+- `AAA bbb 0123 !!`
+  - -> `0123Ab !`
+- `Run Extension: Extension Host [0]`
+  - -> `0EHReinostux :[]`
+- `Hello Hello, 你好你好， 123! こんにちは World。안녕하세요 ( っ*'ω'*c)`
+  - -> `123HWcdelor !'()*,。，你好こんにちはっ안녕하세요ω`
+- `如果你能记住我的名字，如果你们都能记住我的名字，也许我或者“我们”，终有一天能自由地生存着。`
+  - -> `“”。，如果你能记住我的名字们都也许或者终有一天自由地生存着`
+
+## Compile
+
+```sh
+npm install -g yo generator-code @vscode/vsce
+npm install
+npm run compile
+vsce package
+```
 
 ## Release Notes
 
